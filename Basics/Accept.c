@@ -29,6 +29,11 @@ int main(){
 
     int myAccept = accept(mySocket,NULL,NULL);
     char* massege = "HTTP/1.1 200 OK\r\n\r\nHello from my server!\n";
+    char* errormas = "HTTP/1.1 200 OK\r\n\r\n400 not found!\n";
+    if(myAccept==-1){
+        write(myAccept,errormas,strlen(errormas));
+        return 1;
+    }
 
     write(myAccept,massege,strlen(massege));
     close(myAccept);
